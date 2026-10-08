@@ -2,7 +2,7 @@ import Image from "next/image";
 import { RxGithubLogo } from "react-icons/rx";
 
 interface Props {
-  src: string;
+  src?: string;
   title: string;
   description: string;
   githubUrl?: string;
@@ -20,15 +20,26 @@ const ProjectCard = ({
 }: Props) => {
   return (
     <article className="relative flex h-full flex-col overflow-hidden rounded-xl border border-[#2A0E61] bg-[#030014]/70 shadow-lg transition-colors hover:border-purple-500/60">
-      <div className="relative aspect-video w-full overflow-hidden bg-black/30">
-        <Image
-          src={src}
-          alt={`${title} project preview`}
-          fill
-          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-          className="object-contain"
-        />
-      </div>
+      {src ? (
+        <div className="relative aspect-video w-full overflow-hidden bg-black/30">
+          <Image
+            src={src}
+            alt={`${title} project preview`}
+            fill
+            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+            className="object-contain"
+          />
+        </div>
+      ) : (
+        <div
+          aria-hidden="true"
+          className="flex aspect-video items-center justify-center border-b border-purple-500/20 bg-gradient-to-br from-purple-950/70 via-[#030014] to-cyan-950/50 p-6"
+        >
+          <span className="text-center text-2xl font-semibold text-purple-100">
+            {title}
+          </span>
+        </div>
+      )}
 
       <div className="flex flex-1 flex-col gap-4 p-5">
         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -78,7 +89,10 @@ const ProjectCard = ({
               aria-label={`View ${title} on GitHub (opens in a new tab)`}
               className="inline-flex items-center gap-2 rounded-lg border border-purple-500/40 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-purple-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
             >
-              <RxGithubLogo aria-hidden="true" className="h-4 w-4" />
+              <RxGithubLogo
+                aria-hidden="true"
+                className="h-4 w-4"
+              />
               View on GitHub
             </a>
           </div>

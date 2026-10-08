@@ -1,73 +1,34 @@
 "use client";
 
 import { useState } from "react";
+import {
+  projects,
+  projectCategories,
+  type ProjectCategory,
+} from "@/constants/projects";
 import ProjectCard from "../sub/ProjectCard";
 
-const categories = [
-  "All",
-  "Web & Software",
-  "AI & Data",
-  "Systems & Hardware",
-] as const;
-
-type Category = (typeof categories)[number];
-
-interface Project {
-  title: string;
-  src: string;
-  description: string;
-  category: Exclude<Category, "All">;
-  technologies: string[];
-  githubUrl?: string;
-  status?: "Complete" | "In progress";
-}
-
-const projects: Project[] = [
-  {
-    title: "Portfolio Website",
-    src: "/portfoliob.png",
-    description:
-      "My personal portfolio showcasing my projects, technical skills, and engineering experience through an animated space theme.",
-    category: "Web & Software",
-    technologies: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Node.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Three.js",
-    ],
-    githubUrl:
-      "https://github.com/OratorMurambiwa/portfoliowebsite",
-  },
-  {
-    title: "BookWyz",
-    src: "/bookwyz.png",
-    description:
-      "A Python book recommendation system that helps users discover books by author, title, or genre.",
-    category: "AI & Data",
-    technologies: ["Python"],
-  },
-  {
-    title: "Chatbot",
-    src: "/chat.png",
-    description:
-      "A conversational chatbot built in Python to engage users in natural language conversations.",
-    category: "AI & Data",
-    technologies: ["Python"],
-  },
-];
+const INITIAL_COUNT = 6;
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] =
-    useState<Category>("All");
+    useState<ProjectCategory>("All");
+  const [showAll, setShowAll] = useState(false);
 
   const filteredProjects = projects.filter(
     (project) =>
       activeCategory === "All" ||
       project.category === activeCategory
   );
+
+  const visibleProjects = showAll
+    ? filteredProjects
+    : filteredProjects.slice(0, INITIAL_COUNT);
+
+  const selectCategory = (category: ProjectCategory) => {
+    setActiveCategory(category);
+    setShowAll(false);
+  };
 
   return (
     <section
@@ -83,21 +44,21 @@ const Projects = () => {
       </h2>
 
       <p className="mb-8 max-w-2xl text-center leading-relaxed text-gray-300">
-        Explore my work in software development, AI, and systems
-        engineering.
+        Explore my work in software development, AI, data
+        analytics, and scientific computing.
       </p>
 
       <div
         role="group"
         aria-label="Filter projects by category"
-        className="mb-10 flex flex-wrap justify-center gap-3"
+        className="mb-8 flex flex-wrap justify-center gap-3"
       >
-        {categories.map((category) => (
+        {projectCategories.map((category) => (
           <button
             key={category}
             type="button"
             aria-pressed={activeCategory === category}
-            onClick={() => setActiveCategory(category)}
+            onClick={() => selectCategory(category)}
             className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400 ${
               activeCategory === category
                 ? "border-purple-400 bg-purple-500/20 text-white"
@@ -109,33 +70,39 @@ const Projects = () => {
         ))}
       </div>
 
-      <p
-        role="status"
-        className="mb-5 text-sm text-gray-400"
-      >
-        {filteredProjects.length}{" "}
-        {filteredProjects.length === 1 ? "project" : "projects"}
+      <p role="status" className="mb-6 text-sm text-gray-400">
+        Showing {visibleProjects.length} of{" "}
+        {filteredProjects.length} projects
       </p>
 
-      {filteredProjects.length > 0 ? (
-        <div className="grid w-full max-w-7xl grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              src={project.src}
-              title={project.title}
-              description={project.description}
-              githubUrl={project.githubUrl}
-              technologies={project.technologies}
-              status={project.status}
-            />
-          ))}
-        </div>
-      ) : (
-        <p className="py-12 text-center text-gray-400">
-          Projects in this category will be added soon.
-        </p>
-      )}
+      <div
+        id="project-grid"
+        className="grid w-full max-w-7xl grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3"
+      >
+        {visibleProjects.map((project) => (
+          <ProjectCard
+            key={project.githubUrl}
+            src={project.src}
+            title={project.title}
+            description={project.description}
+            githubUrl={project.githubUrl}
+            technologies={project.technologies}
+            status={project.status}
+          />
+        ))}
+      </div>
+
+      {!showAll &&
+        filteredProjects.length > INITIAL_COUNT && (
+          <button
+            type="button"
+            aria-controls="project-grid"
+            onClick={() => setShowAll(true)}
+            className="mt-10 rounded-lg border border-purple-500/40 bg-[#030014]/70 px-6 py-3 font-medium text-white transition-colors hover:bg-purple-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
+          >
+            Show All {filteredProjects.length} Projects
+          </button>
+        )}
     </section>
   );
 };
