@@ -23,7 +23,7 @@ const Projects = () => {
         />
         <ProjectCard
           src="/chat.png"
-          title="Chatbot"
+          title="AI-Powered Stroke System"
           description="An easy to use conversational chatbot built in Python designed to engage in natural langauge conversations with users."
         />
       </div>
