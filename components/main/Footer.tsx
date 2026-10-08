@@ -1,72 +1,53 @@
-import React from "react";
-import {
-  RxDiscordLogo,
-  RxGithubLogo,
-  RxInstagramLogo,
-  RxTwitterLogo,
-  RxLinkedinLogo,
-} from "react-icons/rx";
-
-import { FaYoutube } from "react-icons/fa";
+import { RxGithubLogo, RxLinkedinLogo } from "react-icons/rx";
 
 const Footer = () => {
   return (
-    <div className="w-full h-full bg-transparent text-gray-200 shadow-lg p-[15px] ">
-        <div className="w-full flex flex-col items-center justify-center m-auto">
-            <div className="w-full h-full flex flex-row items-center justify-around flex-wrap">
-                
+    <footer
+      id="contact"
+      className="relative z-10 mt-10 border-t border-purple-500/20 bg-[#030014]/60 px-6 py-10"
+    >
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
+        <div>
+          <p className="text-lg font-semibold text-white">
+            Let&apos;s Connect
+          </p>
 
-                <div className="min-w-[200px] h-auto flex flex-col items-center justify-start">
-                    <div className="font-bold text-[16px]">Community</div>
-                    <p className="flex flex-row items-center my-[15px] cursor-pointer">
-                        <FaYoutube />
-                        <span className="text-[15px] ml-[6px]">Youtube</span>    
-                    </p>
-                    <p className="flex flex-row items-center my-[15px] cursor-pointer">
-                        <RxGithubLogo />
-                        <span className="text-[15px] ml-[6px]">Github</span>    
-                    </p>
-                    <p className="flex flex-row items-center my-[15px] cursor-pointer">
-                        <RxDiscordLogo />
-                        <span className="text-[15px] ml-[6px]">Discord</span>    
-                    </p>
-                </div>
-                <div className="min-w-[200px] h-auto flex flex-col items-center justify-start">
-                    <div className="font-bold text-[16px]">Social Media</div>
-                    <p className="flex flex-row items-center my-[15px] cursor-pointer">
-                        <FaYoutube />
-                        <span className="text-[15px] ml-[6px]">Instagram</span>    
-                    </p>
-                    <p className="flex flex-row items-center my-[15px] cursor-pointer">
-                        <RxGithubLogo />
-                        <span className="text-[15px] ml-[6px]">Twitter</span>    
-                    </p>
-                    <p className="flex flex-row items-center my-[15px] cursor-pointer">
-                        <RxDiscordLogo />
-                        <span className="text-[15px] ml-[6px]">Linkedin</span>    
-                    </p>
-                </div>
-                <div className="min-w-[200px] h-auto flex flex-col items-center justify-start">
-                    <div className="font-bold text-[16px]">About</div>
-                   <p className="flex flex-row items-center my-[15px] cursor-pointer">
-                     
-                        <span className="text-[15px] ml-[6px]">Become Sponsor</span>    
-                    </p>
-                    <p className="flex flex-row items-center my-[15px] cursor-pointer">
-                      
-                        <span className="text-[15px] ml-[6px]">Learning about me</span>    
-                    </p>
-                    <p className="flex flex-row items-center my-[15px] cursor-pointer">
-                  
-                        <span className="text-[15px] ml-[6px]">murambiwaorator@gmail.com</span>    
-                    </p>
-                </div>
-            </div>
-
-           
+          <a
+            href="mailto:omurambi@gsumail.gram.edu"
+            className="mt-2 inline-block rounded text-sm text-gray-300 transition-colors hover:text-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
+          >
+            omurambi@gsumail.gram.edu
+          </a>
         </div>
-    </div>
-  )
-}
 
-export default Footer
+        <div className="flex items-center gap-6">
+          <a
+            href="https://github.com/OratorMurambiwa"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile (opens in a new tab)"
+            className="rounded text-gray-300 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
+          >
+            <RxGithubLogo aria-hidden="true" className="h-6 w-6" />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/oratormurambiwa/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile (opens in a new tab)"
+            className="rounded text-gray-300 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
+          >
+            <RxLinkedinLogo aria-hidden="true" className="h-6 w-6" />
+          </a>
+        </div>
+
+        <p className="text-sm text-gray-400">
+          © {new Date().getFullYear()} Orator Murambiwa
+        </p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
