@@ -11,11 +11,11 @@ interface ExperienceEntry {
 const experience: ExperienceEntry[] = [
   {
     organization: "Los Alamos National Laboratory",
-    role: "Control Software Engineering Intern",
+    role: "Controls Software Engineering Intern",
     dates: "May – August 2026",
     location: "Los Alamos, New Mexico",
     description:
-      "Worked with researchers and engineers to build a unified control application for a beam position monitor calibration station. Connected RF instruments and precision motion stages through a Python interface with automated measurements, real-time plots, and Excel logging.",
+      "Worked on some cool stuff with super smart people",
     tags: [
       "Python",
       "PyQt5",
@@ -32,28 +32,12 @@ const experience: ExperienceEntry[] = [
     ],
   },
   {
-    organization: "Grambling State University",
-    role: "LS-LAMP Research Assistant",
-    dates: "October 2025 – Present",
-    location: "Grambling, Louisiana",
-    description:
-      "Support laboratory research by maintaining mouse liver cell cultures and preparing samples for storage. Perform media exchanges, cell splitting, centrifugation, and cryopreservation using standardized sterile handling and biosafety procedures.",
-    tags: [
-      "Cell Culture",
-      "Aseptic Technique",
-      "DMEM-FBS Media",
-      "Centrifugation",
-      "DMSO Cryopreservation",
-      "Biosafety",
-    ],
-  },
-  {
-    organization: "SLAC — Stanford Linear Accelerator Center",
+    organization: "SLAC (Stanford Linear Accelerator Center) National Accelerator Laboratory",
     role: "Software Engineering Intern",
     dates: "June – August 2025",
     location: "Stanford, California",
     description:
-      "Built a unified web platform for tracking LCLS cleanroom assembly status, coordinating workflows, and supporting team communication. Integrated role-based access, document task extraction, real-time messaging, room and equipment reservations, and Excel component retrieval.",
+      "Built a unified web platform for tracking assembly status, coordinating workflows, and supporting team communication. Integrated role-based access, document task extraction, real-time messaging, room and equipment reservations, and Excel component retrieval.",
     tags: [
       "Python",
       "Django",
@@ -73,8 +57,8 @@ const experience: ExperienceEntry[] = [
   },
   {
     organization: "Grambling State University",
-    role: "Researcher — Social Impacts of AI",
-    dates: "September – October 2024",
+    role: "Student Researcher — Social Impacts of AI",
+    dates: "August – November 2024",
     location: "Grambling, Louisiana",
     description:
       "Researched the potential social impacts of artificial intelligence under Dr. Morsheda Hassan’s mentorship. Co-authored “AI’s Ripple Effects: The Potential Social Impacts of Artificial Intelligence” and presented the research at the International Academy of Business and Public Administration Disciplines conference in Las Vegas.",
@@ -112,7 +96,7 @@ const professionalDevelopment: ExperienceEntry[] = [
     dates: "June 2026 – Present",
     description:
       "Helping develop ClearVote, a project aimed at helping college students recognize political misinformation, AI-generated content, and deepfakes while encouraging informed digital engagement. Currently planning a Chrome extension and backend to support the project.",
-    tagsLabel: "Planned technologies",
+    tagsLabel: "Technologies",
     tags: [
       "JavaScript",
       "Chrome Extension APIs",
@@ -123,7 +107,7 @@ const professionalDevelopment: ExperienceEntry[] = [
     ],
   },
   {
-    organization: "Break Through Tech AI",
+    organization: "Break Through Tech",
     role: "AI Fellow",
     dates: "March 2026 – Present",
     description:
@@ -137,6 +121,22 @@ const professionalDevelopment: ExperienceEntry[] = [
       "Fraud Detection",
       "AUPRC",
       "F1-Score",
+    ],
+  },
+  {
+    organization: "Grambling State University",
+    role: "LS-LAMP Research Assistant",
+    dates: "October 2025 – Present",
+    location: "Grambling, Louisiana",
+    description:
+      "Support laboratory research by maintaining mouse liver cell cultures and preparing samples for storage. Perform media exchanges, cell splitting, centrifugation, and cryopreservation using standardized sterile handling and biosafety procedures.",
+    tags: [
+      "Cell Culture",
+      "Aseptic Technique",
+      "DMEM-FBS Media",
+      "Centrifugation",
+      "DMSO Cryopreservation",
+      "Biosafety",
     ],
   },
   {
@@ -192,6 +192,7 @@ const ExperienceCard = ({
 
         <div className="shrink-0 text-sm text-gray-400 sm:text-right">
           <p>{entry.dates}</p>
+
           {entry.location && (
             <p className="mt-1">{entry.location}</p>
           )}

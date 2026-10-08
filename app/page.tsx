@@ -1,20 +1,17 @@
 import Hero from "@/components/main/Hero";
 import Projects from "@/components/main/Projects";
+import Experience from "@/components/main/Experience";
 import Skills from "@/components/main/Skills";
-import Image from "next/image";
 
 export default function Home() {
   return (
-<main className="h-full w-full">
-  <div className="flex flex-col h-[850px] gap-20">
-    <Hero />
-    <Skills/>
-    <Projects/>
-
-  </div>
-
-</main>
-
-  )
+    <main className="min-h-screen w-full">
+      <div className="flex w-full flex-col">
+        <Hero />
+        <Projects />
+        <Experience />
+        <Skills />
+      </div>
+    </main>
+  );
 }
- 
