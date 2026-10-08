@@ -1,33 +1,51 @@
-import React from "react";
 import ProjectCard from "../sub/ProjectCard";
 
 const Projects = () => {
   return (
-    <div
-      className="flex flex-col items-center justify-center py-10"
+    <section
       id="projects"
+      aria-labelledby="projects-heading"
+      className="relative z-10 flex scroll-mt-24 flex-col items-center px-6 py-16 md:px-12 lg:px-20"
     >
-      <h1 className="text-[40px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 py-10">
+      <h2
+        id="projects-heading"
+        className="bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text py-6 text-center text-3xl font-semibold text-transparent sm:text-4xl"
+      >
         My Projects
-      </h1>
-      <div className="h-full w-full flex flex-col md:flex-row gap-10 px-10">
+      </h2>
+
+      <div className="grid w-full max-w-7xl grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
         <ProjectCard
           src="/portfoliob.png"
           title="Portfolio Website"
-          description="A portfolio website built using JS, CSS and HTML designed to showcase my details, projects and skills "
+          description="My personal portfolio showcasing my projects, technical skills, and engineering experience through an animated space theme."
+          githubUrl="https://github.com/OratorMurambiwa/portfoliowebsite"
+          technologies={[
+            "Next.js",
+            "React",
+            "Node.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "Framer Motion",
+            "Three.js",
+          ]}
         />
+
         <ProjectCard
           src="/bookwyz.png"
           title="BookWyz"
-          description="Built a book recommendation system using Python which helps users discover books by inputing the author's name, title or genre."
+          description="A Python book recommendation system that helps users discover books by author, title, or genre."
+          technologies={["Python"]}
         />
+
         <ProjectCard
           src="/chat.png"
-          title="AI-Powered Stroke System"
-          description="An easy to use conversational chatbot built in Python designed to engage in natural langauge conversations with users."
+          title="Chatbot"
+          description="A conversational chatbot built in Python to engage users in natural language conversations."
+          technologies={["Python"]}
         />
       </div>
-    </div>
+    </section>
   );
 };
 
